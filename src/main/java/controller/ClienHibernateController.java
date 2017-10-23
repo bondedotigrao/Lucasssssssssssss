@@ -88,8 +88,23 @@ public class ClienHibernateController implements ClienteHibernateDAO {
     }
 
     @Override
-    public void alterar(Cliente t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void alterar(Cliente cliente) {
+        Session session = this.session.openSession();
+        Transaction t = session.beginTransaction();
+        
+        try{
+        
+        session.update(cliente);
+        t.commit();
+        
+        
+        }catch(Exception alteraClienteException){
+            System.out.println(alteraClienteException.getMessage() + "\nAlgo de inesperado aconteceu ao alterar o cliente");
+            t.rollback();
+        }finally{
+            session.close();
+        }
+        
     }
 
     @Override

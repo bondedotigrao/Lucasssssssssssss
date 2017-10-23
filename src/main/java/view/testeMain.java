@@ -11,11 +11,13 @@ public class testeMain {
     public static void main(String args[]){
        ClienHibernateController conexaoHibernate = new  ClienHibernateController();
         
-       Cliente c = new Cliente(1,"Curlos","123",
-               "curlosGatinhos2017@bol.com","Rua do cipó",
-       "123");
+       Cliente c = new Cliente(1,"Cucuzinho","2222222222",
+               "curlosGatinhos2017@bobilinha.com","Rua do penteioo queimadu",
+       "445577788899");
        
-       conexaoHibernate.cadastar(c);
+      conexaoHibernate.alterar(c);
+       
+//       conexaoHibernate.deletar(c);
        
                
 //                   @Id
