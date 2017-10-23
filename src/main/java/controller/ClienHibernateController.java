@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.Cliente;
-import model.ClienteHibernateDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import model.ClienteDAO;
 
 /**
  *
  * @author Jarvis
  */
-public class ClienHibernateController implements ClienteHibernateDAO {
+public class ClienHibernateController implements ClienteDAO {
     private EntityManager em;
     private SessionFactory session;
     private static ClienHibernateController instance = null;
