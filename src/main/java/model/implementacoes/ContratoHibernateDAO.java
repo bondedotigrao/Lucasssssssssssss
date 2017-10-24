@@ -1,14 +1,14 @@
-package controller;
+package model.implementacoes;
 
 import java.util.List;
 import model.Contrato;
-import model.ContratoDAO;
+import model.interfaces.ContratoDAO;
 
 /**
  *
  * @author Jarvis
  */
-public class ContratoHibernateController implements ContratoDAO {
+public class ContratoHibernateDAO implements ContratoDAO {
 
     @Override
     public void cadastar(Contrato contrato) {

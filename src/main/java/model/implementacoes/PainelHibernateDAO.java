@@ -1,10 +1,10 @@
-package controller;
+package model.implementacoes;
 
 import java.util.List;
 import model.Painel;
-import model.PainelDAO;
+import model.interfaces.PainelDAO;
 
-public class PainelHibernateController implements PainelDAO {
+public class PainelHibernateDAO implements PainelDAO {
 
     @Override
     public void cadastar(Painel painel) {

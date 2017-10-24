@@ -1,4 +1,7 @@
-package model;
+package model.interfaces;
+
+import model.Anuncio;
+import model.interfaces.InterfaceDAO;
 
 /**
  *

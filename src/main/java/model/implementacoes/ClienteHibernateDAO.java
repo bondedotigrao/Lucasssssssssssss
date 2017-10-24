@@ -1,4 +1,4 @@
-package controller;
+package model.implementacoes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,26 +8,26 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import model.ClienteDAO;
+import model.interfaces.ClienteDAO;
 
 /**
  *
  * @author Jarvis
  */
-public class ClienHibernateController implements ClienteDAO {
+public class ClienteHibernateDAO implements ClienteDAO {
     private EntityManager em;
     private SessionFactory session;
-    private static ClienHibernateController instance = null;
+    private static ClienteHibernateDAO instance = null;
     
-    public static ClienHibernateController getInstance(){
+    public static ClienteHibernateDAO getInstance(){
         if(instance == null){
-            instance = new ClienHibernateController();
+            instance = new ClienteHibernateDAO();
         }
         
         return instance;
     }
     
-    public ClienHibernateController(){
+    public ClienteHibernateDAO(){
         Configuration cfg = new Configuration().configure();
         this.session = cfg.buildSessionFactory();
     }

@@ -1,14 +1,14 @@
-package controller;
+package model.implementacoes;
 
 import java.util.List;
 import model.Anuncio;
-import model.AnuncioDAO;
+import model.interfaces.AnuncioDAO;
 
 /**
  *
  * @author Jarvis
  */
-public class AnuncioHibernateController implements AnuncioDAO {
+public class AnuncioHibernateDAO implements AnuncioDAO {
 
     @Override
     public void cadastar(Anuncio anuncio) {
