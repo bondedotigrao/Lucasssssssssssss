@@ -47,5 +47,6 @@ Contributor(s):
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">ifpe</property>
     <mapping class="model.Cliente" />
+    <mapping class="model.Anuncio" />
   </session-factory>
 </hibernate-configuration>

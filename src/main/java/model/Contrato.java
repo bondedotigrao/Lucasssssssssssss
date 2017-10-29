@@ -4,6 +4,7 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.persistence.Id;
 public class Contrato {
     @Id
     private int id;
-    @Column
+    @OneToOne
     private Cliente cliente;
     @Column
     private Date inicioContrato;

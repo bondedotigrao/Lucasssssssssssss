@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
 
 /**
  *
@@ -18,7 +21,9 @@ public class Painel {
     private String endereco;
     @Column
     private Time horarioOn;
-    @Column
+    @ManyToMany
+    @MapsId("id")
+    @JoinColumn(name="id", referencedColumnName="idAnuncio")
     private List<Anuncio> anuncios;
     
     public Painel(){

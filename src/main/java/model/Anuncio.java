@@ -1,39 +1,47 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Time;
+import java.time.Duration;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Jarvis
  */
 @Entity
-public class Anuncio {
-    @Id
-    private int id;
-    @Column
+public class Anuncio implements Serializable {
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY) @Column(name="idAnuncio")
+    private int idAnuncio;
+    @ManyToOne
     private Cliente cliente;
     @Column
-    private Time tempo;
+    private Duration duracao;
+    @ManyToOne
+    private Painel painel;
     
     public Anuncio(){
         
     }
 
-    public Anuncio(int id, Cliente cliente, Time tempo) {
-        this.id = id;
+    public Anuncio(int idAnuncio, Cliente cliente, Duration duracao, Painel painel) {
+        this.idAnuncio = idAnuncio;
         this.cliente = cliente;
-        this.tempo = tempo;
+        this.duracao = duracao;
+        this.painel = painel;
     }
 
-    public int getId() {
-        return id;
+    public int getIdAnuncio() {
+        return idAnuncio;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdAnuncio(int idAnuncio) {
+        this.idAnuncio = idAnuncio;
     }
 
     public Cliente getCliente() {
@@ -44,19 +52,28 @@ public class Anuncio {
         this.cliente = cliente;
     }
 
-    public Time getTempo() {
-        return tempo;
+    public Duration getDuracao() {
+        return duracao;
     }
 
-    public void setTempo(Time tempo) {
-        this.tempo = tempo;
+    public void setDuracao(Duration duracao) {
+        this.duracao = duracao;
+    }
+
+    public Painel getPainel() {
+        return painel;
+    }
+
+    public void setPainel(Painel painel) {
+        this.painel = painel;
     }
 
     @Override
     public String toString() {
-        return "Anuncio{" + "id=" + id + ", cliente=" + cliente + ", tempo=" + tempo + '}';
+        return "Anuncio{" + "idAnuncio=" + idAnuncio + ", cliente=" + cliente + ", duracao=" + duracao + ", painel=" + painel + '}';
     }
-    
+
+   
     
     
 }
