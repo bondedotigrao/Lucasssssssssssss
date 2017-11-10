@@ -1,9 +1,15 @@
 package model;
 
-import java.sql.Date;
+
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -11,10 +17,13 @@ import javax.persistence.OneToOne;
  * @author Jarvis
  */
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Contrato {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int idContrato;
     @OneToOne
+    @JoinColumn(name="cod_cliente", referencedColumnName="idCliente")
     private Cliente cliente;
     @Column
     private Date inicioContrato;
@@ -27,8 +36,7 @@ public class Contrato {
         
     }
 
-    public Contrato(int id, Cliente cliente, Date inicioContrato, Date fimContrato, double valorTotal) {
-        this.id = id;
+    public Contrato(Cliente cliente, Date inicioContrato, Date fimContrato, double valorTotal) {
         this.cliente = cliente;
         this.inicioContrato = inicioContrato;
         this.fimContrato = fimContrato;
@@ -36,11 +44,11 @@ public class Contrato {
     }
 
     public int getId() {
-        return id;
+        return idContrato;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idContrato) {
+        this.idContrato = idContrato;
     }
 
     public Cliente getCliente() {
@@ -77,7 +85,7 @@ public class Contrato {
 
     @Override
     public String toString() {
-        return "Contrato{" + "id=" + id + ", cliente=" + cliente + ", inicioContrato=" + inicioContrato + ", fimContrato=" + fimContrato + ", valorTotal=" + valorTotal + '}';
+        return "Contrato{" + "id=" + idContrato + ", cliente=" + cliente + ", inicioContrato=" + inicioContrato + ", fimContrato=" + fimContrato + ", valorTotal=" + valorTotal + '}';
     }
     
     

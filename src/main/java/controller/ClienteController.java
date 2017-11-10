@@ -9,17 +9,22 @@ import model.implementacoes.ClienteHibernateDAO;
  * @author Jarvis
  */
 public class ClienteController {
-    private static ClienteHibernateDAO instance = null;
+    private static ClienteController instance = null;
+    ClienteHibernateDAO clienteDAO = null;
     
-    public static  ClienteHibernateDAO getInstance(){
+    public static  ClienteController getInstance(){
         if(instance == null){
-            instance = new ClienteHibernateDAO();
+            instance = new ClienteController();
         }
         return instance;
     }
     
-    public static void inserir(Cliente cliente){
-        instance.cadastar(cliente);
+    public ClienteController(){
+       clienteDAO  = new ClienteHibernateDAO();
+    }
+    
+    public  void inserir(Cliente cliente){
+        clienteDAO.cadastar(cliente);
     }
     
     public static void deletar(Cliente cliente){

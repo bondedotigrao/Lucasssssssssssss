@@ -4,16 +4,18 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Cliente {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int idCliente;
     @Column(length = 50)
     private String nome;
     @Column(length = 14)
@@ -24,33 +26,26 @@ public class Cliente {
     private String endereco;
     @Column(length = 14)
     private String cadNacional;
-    @OneToMany
-    @MapsId("id")
-    @JoinColumn(name = "id", referencedColumnName = "idAnuncio")
-    private List<Anuncio> anuncios;
-    @OneToOne
-    private Contrato contrato;
+
 
     public Cliente() {
     }
 
-    public Cliente(int id, String nome, String telefone, String email, String endereco, String cadNacional, List<Anuncio> anuncios, Contrato contrato) {
-        this.id = id;
+    public Cliente( String nome, String telefone, String email, String endereco, String cadNacional) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
         this.cadNacional = cadNacional;
-        this.anuncios = anuncios;
-        this.contrato = contrato;
+
     }
 
     public int getId() {
-        return id;
+        return idCliente;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNome() {
@@ -93,25 +88,9 @@ public class Cliente {
         this.cadNacional = cadNacional;
     }
 
-    public List<Anuncio> getAnuncios() {
-        return anuncios;
-    }
-
-    public void setAnuncios(List<Anuncio> anuncios) {
-        this.anuncios = anuncios;
-    }
-
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-    }
-
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", endereco=" + endereco + ", cadNacional=" + cadNacional + ", anuncios=" + anuncios + ", contrato=" + contrato + '}';
+        return "Cliente{" + "id=" + idCliente + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", endereco=" + endereco + ", cadNacional=" + cadNacional + '}';
     }
 
 }
