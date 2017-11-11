@@ -10,7 +10,7 @@ import model.implementacoes.ClienteHibernateDAO;
  */
 public class ClienteController {
     private static ClienteController instance = null;
-    ClienteHibernateDAO clienteDAO = null;
+    private ClienteHibernateDAO clienteDAO = null;
     
     public static  ClienteController getInstance(){
         if(instance == null){
@@ -24,22 +24,22 @@ public class ClienteController {
     }
     
     public  void inserir(Cliente cliente){
-        clienteDAO.cadastar(cliente);
+        this.clienteDAO.cadastar(cliente);
     }
     
-    public static void deletar(Cliente cliente){
-        instance.deletar(cliente);
+    public  void deletar(Cliente cliente){
+        this.clienteDAO.deletar(cliente);
     }
     
-    public static Cliente recuperar(int codigo){
-        return instance.recuperar(codigo);
+    public  Cliente recuperar(int codigo){
+        return this.clienteDAO.recuperar(codigo);
     }
     
-    public static void alterar(Cliente cliente){
-        instance.alterar(cliente);
+    public  void alterar(Cliente cliente){
+       this.clienteDAO.alterar(cliente);
     }
     
-    public static List<Cliente> recuperarTodos(){
-        return instance.recuperarTodos();
+    public  List<Cliente> recuperarTodos(){
+        return this.clienteDAO.recuperarTodos();
     }
 }

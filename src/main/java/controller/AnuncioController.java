@@ -9,34 +9,38 @@ import model.implementacoes.AnuncioHibernateDAO;
  * @author Jarvis
  */
 public class AnuncioController {
-    private static AnuncioHibernateDAO instance = null;
+    private static AnuncioController instance = null;
+    private AnuncioHibernateDAO anuncioDAO = null;
     
-    public static AnuncioHibernateDAO getInstance(){
+    public static AnuncioController getInstance(){
         if(instance == null){
-            instance = new AnuncioHibernateDAO();
+            instance = new AnuncioController();
         }
         
         return instance;
     } 
     
-    
-    public static void adicionar(Anuncio anuncio){
-        instance.cadastar(anuncio);
+    public AnuncioController(){
+        anuncioDAO = new AnuncioHibernateDAO();
     }
     
-    public static void deletar(Anuncio anuncio){
-        instance.deletar(anuncio);
+    public  void adicionar(Anuncio anuncio){
+        anuncioDAO.cadastar(anuncio);
     }
     
-    public static Anuncio recuperar(int codigo){
-        return instance.recuperar(codigo);
+    public  void deletar(Anuncio anuncio){
+        anuncioDAO.deletar(anuncio);
     }
     
-    public static void alterar(Anuncio anuncio){
-        instance.alterar(anuncio);
+    public  Anuncio recuperar(int codigo){
+        return anuncioDAO.recuperar(codigo);
     }
     
-    public static List<Anuncio> recuperarTodos(){
-        return instance.recuperarTodos();
+    public  void alterar(Anuncio anuncio){
+        anuncioDAO.alterar(anuncio);
+    }
+    
+    public  List<Anuncio> recuperarTodos(){
+        return anuncioDAO.recuperarTodos();
     }
 }
