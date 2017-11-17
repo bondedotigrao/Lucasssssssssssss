@@ -1,10 +1,14 @@
 package model;
 
-import java.sql.Time;
+import java.time.Duration;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapsId;
@@ -14,13 +18,16 @@ import javax.persistence.MapsId;
  * @author Jarvis
  */
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Painel {
+    
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idPainel;
     @Column(length = 50)
     private String endereco;
     @Column
-    private Time horarioOn;
+    private Duration horarioOn;
     @ManyToMany
     @MapsId("id")
     @JoinColumn(name="id", referencedColumnName="idAnuncio")
@@ -30,19 +37,18 @@ public class Painel {
         
     }
 
-    public Painel(int id, String endereco, Time horarioOn, List<Anuncio> anuncios) {
-        this.id = id;
+    public Painel(String endereco, Duration horarioOn, List<Anuncio> anuncios) {
         this.endereco = endereco;
         this.horarioOn = horarioOn;
         this.anuncios = anuncios;
     }
 
     public int getId() {
-        return id;
+        return this.idPainel;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idPainel = id;
     }
 
     public String getEndereco() {
@@ -53,11 +59,11 @@ public class Painel {
         this.endereco = endereco;
     }
 
-    public Time getHorarioOn() {
+    public Duration getHorarioOn() {
         return horarioOn;
     }
 
-    public void setHorarioOn(Time horarioOn) {
+    public void setHorarioOn(Duration horarioOn) {
         this.horarioOn = horarioOn;
     }
 
@@ -69,10 +75,13 @@ public class Painel {
         this.anuncios = anuncios;
     }
 
+  
+
+ 
     @Override
     public String toString() {
-        return "Painel{" + "id=" + id + ", endereco=" + endereco + ", horarioOn=" + horarioOn + ", anuncios=" + anuncios + '}';
+        return "Painel{" + "id=" + idPainel + ", endereco=" + endereco + ", horarioOn=" + horarioOn + ", anuncios=" + anuncios + '}';
     }
-    
-    
+
+   
 }

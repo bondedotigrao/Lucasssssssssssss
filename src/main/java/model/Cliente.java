@@ -14,7 +14,7 @@ import javax.persistence.InheritanceType;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCliente;
     @Column(length = 50)
     private String nome;

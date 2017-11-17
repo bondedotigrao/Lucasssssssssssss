@@ -50,5 +50,7 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">create</property>
     <mapping class="model.Cliente"/>
     <mapping class="model.Contrato"/>
+    <mapping class="model.Anuncio"/>
+    <mapping class="model.Painel"/>
   </session-factory>
 </hibernate-configuration>

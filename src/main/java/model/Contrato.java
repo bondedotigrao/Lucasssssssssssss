@@ -20,7 +20,7 @@ import javax.persistence.OneToOne;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Contrato {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idContrato;
     @OneToOne
     @JoinColumn(name="cod_cliente", referencedColumnName="idCliente")
